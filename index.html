@@ -7,54 +7,65 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #eef2f3;
       margin: 0;
       padding: 20px;
     }
-    h2 {
+    h1 {
       text-align: center;
-      color: #333;
+      color: #4caf50;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
     .container {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
-      background: #fff;
+      background: white;
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 2px solid #4caf50;
     }
     label {
       display: block;
+      font-size: 16px;
       margin-bottom: 10px;
+      color: #333;
       font-weight: bold;
     }
     select {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border: 2px solid #4caf50;
+      border-radius: 5px;
       font-size: 16px;
     }
     .info-box {
       margin-top: 20px;
       padding: 15px;
-      background-color: #f0f8ff;
-      border-left: 4px solid #007bff;
-      border-radius: 4px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
       display: none;
     }
     .info-box p {
-      margin: 0;
       font-size: 16px;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #888;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Ergebnisse: KI vs. Mensch</h2>
-    <label for="ki-dropdown">Wähle ein Thema aus:</label>
+    <h1>KI vs. Mensch</h1>
+    <label for="ki-dropdown">Wähle ein Thema:</label>
     <select id="ki-dropdown">
-      <option value="" disabled selected>Bitte wählen...</option>
+      <option value="" disabled selected>Bitte wähle ein Thema aus</option>
       <option value="bilder">KI-generierte Bilder</option>
       <option value="texte">Texte schreiben</option>
       <option value="illegal">Illegale Aktivitäten</option>
@@ -72,34 +83,38 @@
       <p id="info-text"></p>
     </div>
   </div>
-
+  <footer>
+    Erstellt mit einfacher HTML und CSS. Keine KI, nur Gehirn. :)
+  </footer>
   <script>
-    const dropdown = document.getElementById('ki-dropdown');
-    const infoBox = document.getElementById('info-box');
-    const infoText = document.getElementById('info-text');
-
-    const infoData = {
-      bilder: "KI kann Bilder automatisiert generieren, jedoch fehlt oft die künstlerische Intuition, die ein Mensch einbringen kann.",
-      texte: "KI schreibt schnell und faktisch korrekt, aber ohne emotionale Tiefe oder Kreativität.",
-      illegal: "Künstliche Intelligenz kann für Phishing oder andere illegale Aktivitäten missbraucht werden. Datenschutzprobleme sind häufig.",
-      videos: "KI ermöglicht die Automatisierung von Effekten und Optimierungen, jedoch ohne persönliche Anpassungen.",
-      musik: "KI kann unendlich viele Musikvariationen erstellen, aber es fehlt die menschliche Emotionalität.",
-      websuche: "KI verarbeitet große Datenmengen schnell, aber die Ergebnisse hängen stark von der Qualität der zugrunde liegenden Daten ab.",
-      kommunikation: "Chatbots und Übersetzungstools sind nützlich, jedoch fehlt ihnen echte Empathie.",
-      analysen: "KI unterstützt bei datenbasierten Entscheidungen, birgt aber das Risiko, komplexe Probleme falsch zu interpretieren.",
-      marketing: "KI optimiert Kampagnen, kann aber auch manipulative Inhalte erzeugen.",
-      einschleusen: "Cybersecurity-Risiken durch KI können Sicherheitslücken vergrößern.",
-      probleme: "KI löst Probleme effizient, hat aber oft ein begrenztes Verständnis für komplexe Zusammenhänge.",
-      produktion: "Automatisierung durch KI verbessert die Effizienz, führt jedoch auch zu Arbeitsplatzverlusten."
+    // Daten für die Themen
+    var infoData = {
+      bilder: "KI generiert Bilder automatisch, jedoch ohne kreative Intuition.",
+      texte: "KI schreibt schnell und korrekt, aber ohne emotionale Tiefe.",
+      illegal: "KI kann für illegale Aktivitäten wie Phishing missbraucht werden.",
+      videos: "KI automatisiert Videoeffekte, aber ohne persönliche Note.",
+      musik: "KI generiert Musikvariationen, jedoch ohne Emotionen.",
+      websuche: "KI verarbeitet Daten schnell, abhängig von deren Qualität.",
+      kommunikation: "Chatbots helfen, haben aber keine echte Empathie.",
+      analysen: "KI analysiert effizient, kann aber Fehlinterpretationen machen.",
+      marketing: "KI optimiert Kampagnen, jedoch mit manipulativen Risiken.",
+      einschleusen: "KI birgt Sicherheitsrisiken in Cyberangriffen.",
+      probleme: "KI löst Probleme effizient, aber oft ohne komplexes Verständnis.",
+      produktion: "KI automatisiert die Produktion, was Arbeitsplätze kosten kann."
     };
 
-    dropdown.addEventListener('change', () => {
-      const selectedValue = dropdown.value;
+    // Event Listener für Dropdown
+    var dropdown = document.getElementById("ki-dropdown");
+    var infoBox = document.getElementById("info-box");
+    var infoText = document.getElementById("info-text");
+
+    dropdown.addEventListener("change", function () {
+      var selectedValue = dropdown.value;
       if (infoData[selectedValue]) {
         infoText.textContent = infoData[selectedValue];
-        infoBox.style.display = 'block';
+        infoBox.style.display = "block";
       } else {
-        infoBox.style.display = 'none';
+        infoBox.style.display = "none";
       }
     });
   </script>
