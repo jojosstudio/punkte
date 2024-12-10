@@ -4,24 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KI vs. Mensch</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .info-box {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f0f8ff;
+      border-left: 4px solid #007bff;
+      border-radius: 4px;
+      display: none;
+    }
+    .info-box p {
+      margin: 0;
+      font-size: 16px;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.5;">
-  <h2>Ergebnisse: KI vs. Mensch</h2>
-  <p>Wähle aus der Liste, um die einzelnen Punkte anzusehen:</p>
-  <label for="ki-dropdown">Ergebnisse:</label>
-  <select id="ki-dropdown" style="width: 100%; padding: 5px;">
-    <option value="bilder">KI-generierte Bilder: Automatisierung komplexer Designprozesse</option>
-    <option value="texte">Texte schreiben: Schnell und korrekt, aber ohne Kreativität</option>
-    <option value="illegal">Illegale Aktivitäten: Missbrauchsmöglichkeiten und Datenschutzprobleme</option>
-    <option value="videos">Video-Bearbeitung: Automatisierung, jedoch ohne persönliche Anpassungen</option>
-    <option value="musik">Musikgenerierung: Variationen möglich, aber ohne Emotion</option>
-    <option value="websuche">Websuche: Effizient, aber von Datenqualität abhängig</option>
-    <option value="kommunikation">Kommunikation: Chatbots, aber ohne Empathie</option>
-    <option value="analysen">Analysen: Entscheidungsunterstützung, aber Risiko von Fehlinterpretationen</option>
-    <option value="marketing">Marketing: Optimierte Kampagnen, aber manipulative Risiken</option>
-    <option value="einschleusen">Einschleusen: Sicherheitsrisiken durch KI</option>
-    <option value="probleme">Problemlösung: Schnell, aber begrenzt komplex</option>
-    <option value="produktion">Produktion: Automatisierung, aber Verlust von Jobs</option>
-  </select>
+<body>
+  <div class="container">
+    <h2>Ergebnisse: KI vs. Mensch</h2>
+    <label for="ki-dropdown">Wähle ein Thema aus:</label>
+    <select id="ki-dropdown">
+      <option value="" disabled selected>Bitte wählen...</option>
+      <option value="bilder">KI-generierte Bilder</option>
+      <option value="texte">Texte schreiben</option>
+      <option value="illegal">Illegale Aktivitäten</option>
+      <option value="videos">Video-Bearbeitung</option>
+      <option value="musik">Musikgenerierung</option>
+      <option value="websuche">Websuche</option>
+      <option value="kommunikation">Kommunikation</option>
+      <option value="analysen">Analysen</option>
+      <option value="marketing">Marketing</option>
+      <option value="einschleusen">Einschleusen</option>
+      <option value="probleme">Problemlösung</option>
+      <option value="produktion">Produktion</option>
+    </select>
+    <div id="info-box" class="info-box">
+      <p id="info-text"></p>
+    </div>
+  </div>
+
+  <script>
+    const dropdown = document.getElementById('ki-dropdown');
+    const infoBox = document.getElementById('info-box');
+    const infoText = document.getElementById('info-text');
+
+    const infoData = {
+      bilder: "KI kann Bilder automatisiert generieren, jedoch fehlt oft die künstlerische Intuition, die ein Mensch einbringen kann.",
+      texte: "KI schreibt schnell und faktisch korrekt, aber ohne emotionale Tiefe oder Kreativität.",
+      illegal: "Künstliche Intelligenz kann für Phishing oder andere illegale Aktivitäten missbraucht werden. Datenschutzprobleme sind häufig.",
+      videos: "KI ermöglicht die Automatisierung von Effekten und Optimierungen, jedoch ohne persönliche Anpassungen.",
+      musik: "KI kann unendlich viele Musikvariationen erstellen, aber es fehlt die menschliche Emotionalität.",
+      websuche: "KI verarbeitet große Datenmengen schnell, aber die Ergebnisse hängen stark von der Qualität der zugrunde liegenden Daten ab.",
+      kommunikation: "Chatbots und Übersetzungstools sind nützlich, jedoch fehlt ihnen echte Empathie.",
+      analysen: "KI unterstützt bei datenbasierten Entscheidungen, birgt aber das Risiko, komplexe Probleme falsch zu interpretieren.",
+      marketing: "KI optimiert Kampagnen, kann aber auch manipulative Inhalte erzeugen.",
+      einschleusen: "Cybersecurity-Risiken durch KI können Sicherheitslücken vergrößern.",
+      probleme: "KI löst Probleme effizient, hat aber oft ein begrenztes Verständnis für komplexe Zusammenhänge.",
+      produktion: "Automatisierung durch KI verbessert die Effizienz, führt jedoch auch zu Arbeitsplatzverlusten."
+    };
+
+    dropdown.addEventListener('change', () => {
+      const selectedValue = dropdown.value;
+      if (infoData[selectedValue]) {
+        infoText.textContent = infoData[selectedValue];
+        infoBox.style.display = 'block';
+      } else {
+        infoBox.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
